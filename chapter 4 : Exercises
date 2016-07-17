@@ -1,0 +1,524 @@
+Exercises 2*********************************************************************
+
+int main()
+{
+        vector<double> temps;        // temperatures
+        double temp;
+        while (cin>>temp)            // read
+            temps.push_back(temp);   // put into vector
+
+        // compute mean temperature:
+        double sum = 0;
+        for (int i = 0; i< temps.size(); ++i) sum += temps[i];
+        cout << "Average temperature: " << sum/temps.size() << endl;
+
+        // compute median temperature:
+        sort(temps.begin(),temps.end()); // sort temps
+        // "from the beginning to the end."
+        if (temps.size()%2!=0)
+        {
+            cout << "Median temperature: " << temps[temps.size()/2+1] << endl;
+        }
+        else
+        {
+            cout << "Median temperature: " << (temps[temps.size()/2]+temps[temps.size()/2] )/2<< endl;
+        }
+    return 0;
+ }
+
+Exercises 3*********************************************************************
+
+int main()
+{
+    vector<double> dists;
+    double dist = 0;
+    double sum = 0;
+
+    while(cin>>dist)
+    {
+        dists.push_back(dist);
+        sum += dist;
+    }
+
+    sort(dists);
+
+    double max = dists[dists.size()-1];
+    double min = dists[0];
+    double aver = sum/dists.size();
+
+    cout<<"the largest distance is : "<<max<<"\n"
+    <<"the smallest distance is  : "<<min<<"\n"
+    <<"the mean distance is: "<<aver<<endl;
+
+
+//    for (double k : dists)
+//    {
+//       sum+=k;
+//    }
+}
+
+Exercises 4*********************************************************************
+
+int guesses (int x,int y)
+{
+    int guess = x+(y-x)/2;
+    return guess;
+}
+
+int main()
+{
+    cout<<"Please think a number between 1 and 100.";
+    int min=0;              //设定猜范范围的最小值-1
+    int max=101;            //设定猜数范围的最大值+1
+    int guess = 50;         //设定猜的第一个数字为最大值最小值的平均数
+    string check = " ";
+    while ( max-min>3)
+    {
+        cout<<"is the number you are thinking of more than "<<guess<<" ?(answer yes or no)\n";
+        cin>>check;
+        if (check=="yes")
+        {
+            min = guess;
+        }
+        if (check=="no")
+        {
+            max = guess;
+        }
+        guess = guesses(min,max);
+    }
+//	cout << min<<" "<<max<<"\n";
+	cout<<"your number is: "<<(max+min)/2<<" !\n";
+
+}
+
+Exercises 5*********************************************************************
+
+int main()
+{
+    cout<<"Please enter two values and a operator(+ - * /): ";
+    double first = 0;
+    double second = 0;
+    string oper = " ";
+    while (cin>>first>>second>>oper)
+    {
+        if (oper == "+")
+        {
+            cout<<"The sum of "<<first<<" and "<<second<<" is "<<first+second<<".\n";
+        }
+        if (oper == "-")
+        {
+            cout<<"The difference of "<<first<<" and "<<second<<" is "<<first-second<<".\n";
+        }
+        if (oper == "*")
+        {
+            cout<<"The product of "<<first<<" and "<<second<<" is "<<first*second<<".\n";
+        }
+        if (oper == "/")
+        {
+            cout<<"The quotient of "<<first<<" and "<<second<<" is "<<first/second<<".\n";
+        }
+    }
+
+    return 0;
+}
+
+Exercises 6*********************************************************************
+
+int main()
+{
+    vector<string> spelleds = {"zero","one","two","three","four","five","six","seven","eight","nine"};
+    vector<int> numbers = {0,1,2,3,4,5,6,7,8,9};
+//    int number = 0;
+    string spelled = " ";
+//    cout<<"Enter a number between 0 to 9: \n";
+//    while(cin>>number)
+//    {
+//        cout<<spelleds[number]<<"\n";
+//    }
+
+
+
+    cout<<"Enter a spelled_out number between 0 to 9: \n";
+    while(cin>>spelled)
+    {
+        for (int i = 0; i<spelleds.size();++i)
+        {
+            if (spelleds[i]==spelled)
+            {
+                cout<<i<<"\n";
+            }
+        }
+    }
+
+}
+
+Exercises 7*********************************************************************
+
+void operations (double x, double y, string z)
+{
+    if (z == "+")
+    {
+        cout<<"The sum of "<<x<<" and "<<y<<" is "<<x+y<<".\n";
+    }
+    if (z == "-")
+    {
+        cout<<"The difference of "<<x<<" and "<<y<<" is "<<x-y<<".\n";
+    }
+    if (z == "*")
+    {
+        cout<<"The product of "<<x<<" and "<<y<<" is "<<x*y<<".\n";
+    }
+    if (z == "/")
+    {
+        cout<<"The quotient of "<<x<<" and "<<y<<" is "<<x/y<<".\n";
+    }
+
+}
+
+int string2int (string x)
+{
+    vector<string> spelleds = {"zero","one","two","three","four","five","six","seven","eight","nine"};
+    int number = 0;
+    for (int i = 0; i<spelleds.size();++i)
+    {
+        if (spelleds[i]==x)
+        {
+            number = i;
+        }
+
+    }
+    return number;
+}
+
+int main()
+{
+    string check = " ";
+    int first = 0;
+    int second = 0;
+    string fir =  " ";
+    string sec = " ";
+    string oper = " ";
+    while (true)
+    {
+        cout<<"enter d if you want to use digit number to do operation, "
+                <<"enter s if you want to use spelled-out number: \n";
+        cin>>check;
+
+        if (check == "d")
+        {
+            cout<<"Please enter two digit numbers and a operator(+ - * /):\n ";
+            cin>>first>>second>>oper;
+        }
+        if (check == "s")
+        {
+            cout<<"Enter two spelled_out number and a operator(+ - * /):\n";
+            cin>>fir>>sec>>oper;
+            first = string2int(fir);
+            second = string2int(sec);
+        }
+        operations(first,second,oper);
+    }
+
+
+}
+
+Exercises 8*********************************************************************
+
+int main()
+{
+    while(true)
+    {
+        int grain = 0;
+        int square = 0;
+        int number = 0;
+        cout<<"Enter the number of grains: \n";
+        cin>>grain;
+        for (int i = 0; i<64; ++i)
+        {
+            ++square;
+            number += pow(2,i);
+            if (square == 1)
+            {
+                cout<<"you'll get "<<number<<" grain in "<<square<<" square.\n";
+            }
+            else
+            {
+                cout<<"you'll get "<<number<<" grains in "<<square<<" squares.\n";
+            }
+            if(number>= grain)
+            {
+              break;
+            }
+
+        }
+        cout<<"**************************************************\n";
+        cout<<square<<" squares are required to get "<<grain<<" grains.\n";
+    }
+}
+
+Exercises 9*********************************************************************
+
+int main()
+{
+    int square = 0;
+    int number = 0;
+
+        for(int i = 0; i<64; ++i)
+        {
+            ++square;
+            number+=pow(2,i);
+            cout<<"There are "<<number<<" grains in "<<square<<" squares.\n";
+            if (number<0)
+            {
+                break;
+            }
+        }
+    cout<<"finally, "<<square<<" with "<<number<<".\n"; //int时，有效square的最大值为31，32时显示number值为负数
+}
+
+int main()
+{
+    int square = 0;
+    double number = 0;
+
+        for(int i = 0;i<1024; ++i)
+        {
+            ++square;
+            number+=pow(2,i);
+            cout<<"There are "<<number<<" grains in "<<square<<" squares.\n";
+            if (number<0)
+            {
+                break;
+            }
+        }
+    cout<<"finally, "<<square<<" with "<<number<<".\n";  //double 时，有效square最大值为1023，1024时显示number值为inf
+}
+
+Exercises 10*********************************************************************
+
+int string2int (string x)
+{
+    int rps = 0;
+    if (x=="rock")
+    {
+        rps = 1;
+    }
+    if (x=="paper")
+    {
+        rps = 2;
+    }
+    if (x=="scissors")
+    {
+        rps = 3;
+    }
+    return rps;
+}
+
+int main()
+{
+    vector<string> random_rps ={"paper","rock","rock","paper","scissors","rock","paper","rock","scissors","scissors","rock","paper","rock","rock","scissors","scissors","rock","paper","scissors","rock"};
+    int count = 0;
+    int win = 0;
+    int tie = 0;
+    int random = 0;
+    int check = 0;
+    string code_move = " ";
+    string move = " ";
+    cout<<"Enter an number between 21 to 100 to start the rock_paper_scissors game, enter exit to quit.: \n";
+    cin>>random;
+
+    while(move!="exit")
+    {
+        cout<<"enter you move (rock, paper, scissors):\n";
+        cin>>move;
+        if(random/10+count<20)
+        {
+            code_move=random_rps[random/10+count];
+        }
+        else
+        {
+            code_move=random_rps[random/10+count-20];
+        }
+
+        check = string2int(move);
+        switch(check){
+            case 1:
+                if(code_move == "rock")
+                {
+                    cout<<"Computer's move is rock, it's a tie!\n";
+                    ++count;
+                    ++tie;
+                }
+                if(code_move == "paper")
+                {
+                    cout<<"Computor's move is paper, computer wins!\n";
+                    ++count;
+                }
+                if(code_move == "scissors")
+                {
+                    cout<<"Computor's move is scissors, you win!\n";
+                    ++count;
+                    ++win;
+                }
+                break;
+            case 2:
+                if(code_move == "rock")
+                {
+                    cout<<"Computer's move is rock, you win!\n";
+                    ++count;
+                    ++win;
+                }
+                if(code_move == "paper")
+                {
+                    cout<<"Computor's move is paper, it's a tie!\n";
+                    ++count;
+                    ++tie;
+                }
+                if(code_move == "scissors")
+                {
+                    cout<<"Computor's move is scissors, computer wins!\n";
+                    ++count;
+                }
+                break;
+            case 3:
+                if(code_move == "rock")
+               {
+                   cout<<"Computer's move is rock, computer win!\n";
+                   ++count;
+               }
+               if(code_move == "paper")
+               {
+                   cout<<"Computor's move is paper, you win!\n";
+                   ++count;
+                   ++win;
+               }
+               if(code_move == "scissors")
+               {
+                   cout<<"Computor's move is scissors, it's a tie!\n";
+                   ++count;
+                   ++tie;
+               }
+               break;
+        }
+    }
+    cout<<"You played "<<count<<" times. won "<<win<<" times. tied "<<tie<<" times.\n";
+}
+
+Exercises 11\12*********************************************************************
+
+int main()
+{
+    cout<<"Enter the max number to find all prime numbers from 1 to max:";
+    int max = 0;
+    cin>>max;
+    vector<int> primes = {2};
+    bool is_prime = true;
+    for (int i =3; i<max; ++i)
+    {
+        for (int j = 0; j<primes.size(); ++j)
+        {
+            is_prime = true;
+            if (i%primes[j]==0)
+            {
+                is_prime = false;
+//                cout<<i<<" is not a prime.\n";
+                break;
+            }
+        }
+        if (is_prime == true)
+        {
+//            cout<<i<<" is a prime.\n";
+            primes.push_back(i);
+        }
+    }
+
+    cout<<"There are "<<primes.size()<<" prime numbers from 1 to "<<max<<" :\n";
+    for (int i = 0; i<primes.size(); ++i)
+    {
+        cout<<primes[i]<<"\t";
+        if ((i+1)%5==0)
+        {
+            cout<<"\n";
+        }
+    }
+}
+
+Exercises 13/14*********************************************************************
+
+int main()
+{
+    int max = 0;
+    cout<<"Enter the max number to find all prime numbers from 1 to max:";
+    cin>>max;
+    vector<int> list(max+1);
+    for (int i = 0; i<list.size(); ++i)
+    {
+        list[i]=i;
+    }
+    list[1]=0;
+    int now = 2;
+    for (int i = now; i<list.size(); ++i)
+    {
+        if (list[i]==0)
+        {
+            continue;
+        }
+        else
+        {
+            for (int j = 2; i*j<list.size(); ++j)
+            {
+                list[i*j]=0;
+            }
+        }
+    }
+    int count = 0;
+    for (int i = 0; i<list.size(); ++i)
+    {
+        if (list[i]!= 0)
+        {
+            ++count;
+            cout<<list[i]<<"\t";
+            if (count%5==0){
+                cout<<"\n";
+            }
+        }
+    }
+    cout<<" \nfrom 1 to "<<max<<", there are "<<count<<" prime numbers.\n";
+}
+
+Exercises 15*********************************************************************
+
+int main()
+{
+    cout<<"How many first prime numbers do you want to find? \n";
+       int max = 0;
+       cin>>max;
+       vector<int> primes = {2};
+       bool is_prime = true;
+       for (int i =3; primes.size()<max; ++i)
+       {
+           for (int j = 0; j<primes.size(); ++j)
+           {
+               is_prime = true;
+               if (i%primes[j]==0)
+               {
+                   is_prime = false;
+                   break;
+               }
+           }
+           if (is_prime == true)
+           {
+               primes.push_back(i);
+           }
+       }
+
+       cout<<"The first "<<primes.size()<<" prime numbers are:\n";
+       for (int i = 0; i<primes.size(); ++i)
+       {
+           cout<<primes[i]<<"\t";
+           if ((i+1)%5==0)
+           {
+               cout<<"\n";
+           }
+       }
+}
