@@ -708,6 +708,6 @@ int main()
        }
        if (check == false)
        {
-           cout<<"name not found."<<endl;
+           cout<<"no one got this score."<<endl;
        }
 }
