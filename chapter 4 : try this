@@ -1,0 +1,117 @@
+***************************************************************************
+int main()
+{
+    constexpr double usd2eur = 0.90;
+    constexpr double usd2cny = 6.69;
+    constexpr double usd2jpy = 104.68;
+    double account = 0.0;
+    char unit = 'u';
+    cout<<"Please enter the amount of money followed by a unit"
+            <<"(u for dollar,e for euro,c for yuan,j for yen):";
+    cin>>account>>unit;
+
+    if (unit == 'u')
+    {
+        cout<<account<<" dollars == "<<usd2eur*account
+                <<" euro == "<<usd2cny*account<<" yuan == "<<usd2jpy*account<<" yen.";
+    }
+    else if (unit == 'e')
+    {
+        cout<<account<<" euro == "<<account/usd2eur
+                        <<" dallors == "<<usd2cny*account/usd2eur<<" yuan == "<<usd2jpy*account/usd2eur<<" yen.";
+    }
+    else if (unit == 'c')
+    {
+        cout<<account<<" yuan == "<<usd2eur*account/usd2cny
+                        <<" euro == "<<account/usd2cny<<" dallors == "<<usd2jpy*account/usd2cny<<" yen.";
+    }
+    else if (unit == 'j')
+    {
+        cout<<account<<" yen == "<<usd2eur*account/usd2jpy
+                <<" euro == "<<usd2cny*account/usd2jpy<<" yuan == "<<account/usd2jpy<<" dallors.";
+    }
+    else
+    {
+        cout<<"Oops, I don't know that unit!";
+    }
+}
+***************************************************************************
+int main()
+{
+    constexpr double usd2eur = 0.90;
+    constexpr double usd2cny = 6.69;
+    constexpr double usd2jpy = 104.68;
+    double account = 0.0;
+    char unit = 'u';
+    cout<<"Please enter the amount of money followed by a unit"
+           <<"(u for dollar,e for euro,c for yuan,j for yen):";
+    cin>>account>>unit;
+
+    switch (unit)
+    {
+
+    case 'u':
+        cout<<account<<" dollars == "<<usd2eur*account
+               <<" euro == "<<usd2cny*account<<" yuan == "<<usd2jpy*account<<" yen.";
+        break;
+    case 'e':
+       cout<<account<<" euro == "<<account/usd2eur
+                       <<" dallors == "<<usd2cny*account/usd2eur<<" yuan == "<<usd2jpy*account/usd2eur<<" yen.";
+       break;
+    case 'c':
+       cout<<account<<" yuan == "<<usd2eur*account/usd2cny
+                       <<" euro == "<<account/usd2cny<<" dallors == "<<usd2jpy*account/usd2cny<<" yen.";
+       break;
+    case 'j':
+       cout<<account<<" yen == "<<usd2eur*account/usd2jpy
+               <<" euro == "<<usd2cny*account/usd2jpy<<" yuan == "<<account/usd2jpy<<" dallors.";
+       break;
+    default:
+       cout<<"Oops, I don't know that unit!";
+       break;
+    }
+}
+***************************************************************************
+int main()
+{
+    int i = 97;
+        char byte = 'a';
+        while (i<97+26)
+        {
+            cout<<byte<<'\t'<<i<<'\n';
+            byte = char(byte+1);
+            ++i;
+        }
+    char byte = 'A';
+    for(int i = 65;i<65+26; ++i)
+    {
+        cout<<byte<<'\t'<<i<<'\n';
+        byte = char(byte+1);
+    }
+}
+***************************************************************************
+int main()
+{
+vector<string> v = {"broccoli","pepper","chili","spicy"};
+    string word = " ";
+    while (cin>>word)
+    {
+        bool check = true;
+        for (int i = 0; i<v.size(); ++i)
+        {
+            if (v[i]==word)
+            {
+                check = false;
+                break;
+            }
+        }
+        if (check == true)
+        {
+            cout<<word<<'\n';
+        }
+        else
+        {
+            cout<<"BLEEP\n";
+        }
+    }
+}
