@@ -636,3 +636,78 @@ int main()
         cout<<"Solution for "<<a<<"x^2+"<<b<<"x+"<<c<<"=0: x1="<<x1<<" x2="<<x2<<".\n";
     }
 }
+
+Exercises 19/20/21*********************************************************************
+
+int main()
+{
+    vector<string> names;
+    vector<int> scores;
+    string name = " ";
+    int score = 0;
+    cout<<"Enter a set of name-and-value pairs, such as 'Joe 17', terminate input with 'NoName 0':"<<endl;
+    cin>>name>>score;
+    bool check = true;
+    while(name!="NoName")
+    {
+        check = true;
+        for( int i = 0; i<names.size(); ++i)
+        {
+            if (name == names[i])
+            {
+                check = false;
+                cout<<"Oops, "<<name<<" is entered twice.\n"
+                        "continue to enter:"<<endl;
+                break;
+            }
+        }
+        if (check == true)
+        {
+            names.push_back(name);
+            scores.push_back(score);
+        }
+        cin>>name>>score;
+    }
+
+    for (int i = 0; i<names.size(); ++i)
+    {
+        cout<<names[i]<<" "<<scores[i]<<endl;
+    }
+
+    string searchname = " ";                //exercise 20
+    cout<<"Enter a name to find his(her) score:\n";
+    cin>>searchname;
+
+    check = false;
+    for (int i = 0; i<names.size();++i)
+    {
+        if (searchname == names[i])
+        {
+            cout<<scores[i]<<endl;
+            check = true;
+            break;
+        }
+    }
+    if (check == false)
+    {
+        cout<<"name not found."<<endl;
+    }
+
+    int searchscore = 0;                      //exercise 21
+    cout<<"Enter a score to find people who got this score:\n";
+    cin>>searchscore;
+
+    check = false;
+    for (int i = 0; i<scores.size();++i)
+       {
+           if (searchscore == scores[i])
+           {
+               cout<<names[i]<<endl;
+               check = true;
+           }
+       }
+       if (check == false)
+       {
+           cout<<"name not found."<<endl;
+       }
+}
