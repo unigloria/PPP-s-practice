@@ -613,3 +613,26 @@ int main()
             <<"the max string is "<<list[list.size()-1]<<".\n"
             <<"the mode (the string that appears the most times) is "<<save<<". It appears "<<max<<" times."<<endl;
 }
+
+Exercise 18*********************************************************************
+
+int main()
+{
+    double a = 0;
+    double b = 0;
+    double c =0;
+    cout<<"Enter three number a,b,c to solve the quadratic: ax^2+bx+c=0\n";
+    cin>>a>>b>>c;
+    double x1 = 0;
+    double x2 = 0;
+    if ((b*b-4*a*c) < 0)
+    {
+        cout<<"There is  no solution for"<<a<<"x^2+"<<b<<"x+"<<c<<"=0";
+    }
+    else
+    {
+        x1 = (-b+sqrt(b*b-4*a*c))/(2*a);
+        x2 = (-b-sqrt(b*b-4*a*c))/(2*a);
+        cout<<"Solution for "<<a<<"x^2+"<<b<<"x+"<<c<<"=0: x1="<<x1<<" x2="<<x2<<".\n";
+    }
+}
