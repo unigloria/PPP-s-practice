@@ -484,7 +484,7 @@ int main()
     cout<<" \nfrom 1 to "<<max<<", there are "<<count<<" prime numbers.\n";
 }
 
-Exercises 15*********************************************************************
+Exercise 15*********************************************************************
 
 int main()
 {
@@ -519,4 +519,48 @@ int main()
                cout<<"\n";
            }
        }
+}
+
+Exercise 16*********************************************************************
+int main()
+{
+    int number = 0;
+    vector<int> list;
+    cout<<"Enter a series of positive integers, enter '|' to end input:";
+    while (cin>>number)
+    {
+        list.push_back(number);
+    }
+    sort(list);
+    vector<int> search;
+    for (int i = 0; i<list.size(); ++i)   // 遍历排序后的vector list，将其中每个元素首次出现时的下标存入新的vector search
+    {
+        if (i==0 || list[i]!=list[i-1])
+        {
+            search.push_back(i);
+        }
+    }
+    search.push_back(list.size());   //以上循环无法记录最后一组重复元素的个数，将list的元素个数记入search的最后一个元素，使用该元素与search的前一元素相减，可以得到最后一组重复元数的个数。
+//    for (int k : search)           //测试用，打印search中的全部元素
+//    {
+//        cout<<k<<" ";
+//    }
+//    cout<<"\n";
+    int max = 0;
+    int save = 0;
+    for (int i = 0; i<search.size()-1; ++i)
+    {
+        if (search[i+1]-search[i]>max)      //通过search中元素的两两相差，计算list中元素重复的次数
+        {
+            max=search[i+1]-search[i];
+//            cout<<"so far, the mode (the number that  appears the most times) is "<<list[search[i]]<<endl;   //测试用，观察max的变化
+            save = list[search[i]];
+        }
+    }
+    for (int i = 0; i<search.size()-1; ++i)
+        {
+    //        cout<<"value of list["<<search[i]<<"] is("<<list[search[i]]<<"), it appears"<<search[i+1]-search[i]<<"times.\n";    //测试用，打印search定位出的list中所有元素的重复次数
+            cout<<list[search[i]]<<" appears"<<search[i+1]-search[i]<<"times.\n";             //打印每个元素的重复次数
+        }
+    cout<<"the mode (the number that  appears the most times) is "<<save<<". It appears "<<max<<" times."<<endl;
 }
