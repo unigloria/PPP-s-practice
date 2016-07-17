@@ -560,7 +560,7 @@ int main()
     for (int i = 0; i<search.size()-1; ++i)
         {
     //        cout<<"value of list["<<search[i]<<"] is("<<list[search[i]]<<"), it appears"<<search[i+1]-search[i]<<"times.\n";    //测试用，打印search定位出的list中所有元素的重复次数
-            cout<<list[search[i]]<<" appears"<<search[i+1]-search[i]<<"times.\n";             //打印每个元素的重复次数
+            cout<<list[search[i]]<<" appears "<<search[i+1]-search[i]<<" times.\n";             //打印每个元素的重复次数
         }
     cout<<"the mode (the number that  appears the most times) is "<<save<<". It appears "<<max<<" times."<<endl;
 }
