@@ -1,0 +1,294 @@
+Exercises 2：***************************************************************************
+	cout<<"please enter the number of miles.\n";
+	double miles = 0.0;
+	cin>>miles;
+	double kilometers = miles*1.609;
+	cout<<miles<<" miles equals to "<<kilometers<<" kilometers.\n";
+
+Exercises 4：***************************************************************************
+	int val1 = 0;
+	int val2 = 0;
+	cout<<"Enter two integer:\n";
+	cin>>val1>>val2;
+
+	int smaller = 0;
+	int larger = 0;
+	if (val1 > val2)
+	{
+		smaller = val2;
+		larger = val1;
+	}
+	else
+	{
+		smaller = val1;
+		larger = val2;
+	}
+
+	int sum = val1+val2;
+	int difference = larger-smaller;
+	int product = val1*val2;
+	double smallerd = smaller;
+	double largerd = larger;
+	double ratio = smallerd/largerd;
+	double re_ratio = largerd/smallerd;
+
+
+	cout<<"The smaller of "<<val1<<" and "<<val2<<" is "<<smaller<<"\n"
+			<<"the larger of "<<val1<<" and "<<val2<<" is "<<larger<<"\n"
+			<<"the sum of "<<val1<<" and "<<val2<<" is "<<sum<<"\n"
+			<<"the difference of"<<val1<<" and "<<val2<<" is "<<difference<<"\n"
+			<<"the product of "<<val1<<" and "<<val2<<" is "<<product<<"\n"
+			<<"the ratio of "<<val1<<" and "<<val2<<" is "<<ratio<<" or say 1:"<<re_ratio<<"\n";
+
+Exercises 6：***************************************************************************
+	int val1 = 0;
+	int val2 = 0;
+	int val3 = 0;
+	cout<<"Enter three integer:\n";
+	cin>>val1>>val2>>val3;
+
+	int first = 0;
+	int second = 0;
+	int third = 0;
+
+	if (val1<=val2 && val1<=val3)
+	{
+		first = val1;
+		if (val2<=val3)
+		{
+			second = val2;
+			third = val3;
+		}
+		else
+		{
+			second  = val3;
+			third = val2;
+		}
+	}
+	else if (val2<=val3)
+	{
+		first = val2;
+		if (val1<=val3)
+		{
+			second = val1;
+			third = val3;
+		}
+		else
+		{
+			second = val3;
+			third = val1;
+		}
+	}
+	else
+	{
+		first = val3;
+		if (val1<=val2)
+		{
+			second = val1;
+			third = val2;
+		}
+		else
+		{
+			second = val2;
+			third = val1;
+		}
+	}
+	cout<<first<<", "<<second<<", "<<third<<"\n";
+
+Exercises 7：***************************************************************************
+	string val1 = " ";
+	string val2 = " ";
+	string val3 = " ";
+	cout<<"Enter three string:\n";
+	cin>>val1>>val2>>val3;
+
+	string first = " ";
+	string second = " ";
+	string third = " ";
+
+	if (val1<=val2 && val1<=val3)
+	{
+		first = val1;
+		if (val2<=val3)
+		{
+			second = val2;
+			third = val3;
+		}
+		else
+		{
+			second  = val3;
+			third = val2;
+		}
+	}
+	else if (val2<=val3)
+	{
+		first = val2;
+		if (val1<=val3)
+		{
+			second = val1;
+			third = val3;
+		}
+		else
+		{
+			second = val3;
+			third = val1;
+		}
+	}
+	else
+	{
+		first = val3;
+		if (val1<=val2)
+		{
+			second = val1;
+			third = val2;
+		}
+		else
+		{
+			second = val2;
+			third = val1;
+		}
+	}
+	cout<<first<<", "<<second<<", "<<third<<"\n";
+
+Exercises 8：***************************************************************************
+	cout<<"Enter a integer:";
+	int number = 0;
+	cin>>number;
+	if (number/2*2==number)
+	{
+		cout<<"The value "<<number<<" is an even number.\n";
+	}
+	else
+	{
+		cout<<"The value "<<number<<" is an odd number.\n";
+	}
+
+Exercises 9：***************************************************************************
+	cout<<"Enter the spelled-out of a number (between 0 and 3):\n";
+	string number = " ";
+	cin>>number;
+	if (number == "zero")
+	{
+		cout<<0;
+	}
+	else if (number == "one")
+	{
+		cout<<1;
+	}
+	else if (number == "two")
+	{
+		cout<<2;
+	}
+	else if (number == "three")
+	{
+		cout<<3;
+	}
+	else
+	{
+		cout<<"Not a number I know!\n";
+	}
+
+
+Exercises 10：***************************************************************************
+	cout<<"Enter an operation followed by two operands:\n";
+	string operation = " ";
+	double val1 = 0;
+	double val2 = 0;
+	double result = 0;
+	cin>>operation>>val1>>val2;
+	if (operation == "+")
+	{
+		result = val1+val2;
+	}
+	if (operation == "-")
+	{
+		result = val1-val2;
+	}
+	if (operation == "*")
+	{
+		result = val1*val2;
+	}
+	if (operation == "/")
+	{
+		result = val1/val2;
+	}
+	cout<<result<<"\n";
+
+Exercises 11：***************************************************************************
+	cout<<"How many pennies of you have?\n";
+	int pennies = 0;
+	cin>>pennies;
+
+	cout<<"How many nickels of you have?\n";
+	int nickels = 0;
+	cin>>nickels;
+
+	cout<<"How many dimes of you have?\n";
+	int dimes = 0;
+	cin>>dimes;
+
+	cout<<"How many quarters of you have?\n";
+	int quarters = 0;
+	cin>>quarters;
+
+	cout<<"How many half dollars of you have?\n";
+	int half_dollars = 0;
+	cin>>half_dollars;
+
+	cout<<"How many dollars of you have?\n";
+	int dollars = 0;
+	cin>>dollars;
+
+	double result = pennies+nickels*5+dimes*10+quarters*25+half_dollars*50+dollars*100;
+	double result_in_dollars = result/100;
+
+	if (pennies == 1)
+	{
+		cout<<"You have "<<pennies<<" penny\n";
+	}
+	else
+	{
+		cout<<"You have "<<pennies<<" pennies\n";
+	}
+	if (nickels == 1)
+	{
+		cout<<"You have "<<nickels<<" nickel\n";
+	}
+	else
+	{
+		cout<<"You have "<<nickels<<" nickels\n";
+	}
+	if (dimes == 1)
+	{
+		cout<<"You have "<<dimes<<" dime\n";
+	}
+	else
+	{
+		cout<<"You have "<<dimes<<" dimes\n";
+	}
+	if (quarters == 1)
+	{
+		cout<<"You have "<<quarters<<" quarter\n";
+	}
+	else
+	{
+		cout<<"You have "<<quarters<<" quarters\n";
+	}
+	if (half_dollars == 1)
+	{
+		cout<<"You have "<<half_dollars<<" half_dollar\n";
+	}
+	else
+	{
+		cout<<"You have "<<half_dollars<<" half dollars\n";
+	}
+	if (dollars == 1)
+	{
+		cout<<"You have "<<dollars<<" dollar\n";
+	}
+	else
+	{
+		cout<<"You have "<<dollars<<" dollars\n";
+	}
+	cout<<"The value of all of your coins is "<<result
+			<<" cents. or say $"<<result_in_dollars<<".\n";
