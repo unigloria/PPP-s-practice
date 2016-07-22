@@ -1,3 +1,5 @@
 # answers to the Exercises of "programming principles and practice using C++"
 
-this is my answers, if you find anything wrong or stupid, please tell me, thanks a lot:)
+just for PPP(2nd), all be tested, but not sure if they are all correct.
+
+to be continued...
