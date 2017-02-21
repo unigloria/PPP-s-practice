@@ -1,0 +1,665 @@
+Exercise 2*********************************************************************
+
+double ctok (double c)
+{
+    double k = c + 273.15;
+    return k;
+}
+int main()
+{
+    double c = 0;
+    cin>> c;
+    double k = ctok(c);
+    cout<<k<<'\n';
+}
+
+
+Exercise 3*********************************************************************
+
+double ctok (double c)
+{
+    double k = c + 273.15;
+    return k;
+}
+int main()
+{
+    double c = 0;
+    cin>> c;
+    if (c<-273.15)
+    {
+        simple_error("this temperature is not exist(in the main)!");
+    }
+    else
+    {
+        double k = ctok(c);
+        cout<<k<<'\n';
+    }
+}
+
+Exercise 4*********************************************************************
+
+double ctok (double c)
+{
+	double k = 0;
+	if (c<-273.15)
+	{
+		simple_error("this temperature is not exist(in the ctok)!");
+	}
+	else
+	{
+		k = c + 273.15;
+	}
+    return k;
+}
+int main()
+{
+    double c = 0;
+    cin>> c;
+
+        double k = ctok(c);
+        cout<<k<<'\n';
+}
+
+Exercise 5*********************************************************************
+
+double ctok (double c)
+{
+	double k = 0;
+	if (c<-273.15)
+	{
+		error("this celsius temperature is not exist(in the ctok)!");
+	}
+	else
+	{
+		k = c + 273.15;
+	}
+    return k;
+}
+
+double ktoc (double k)
+{
+	double c = 0;
+	if (k<0)
+	{
+		error("this kelvin temperature is not exist(in the ktoc)!");
+	}
+	else
+	{
+		c = k - 273.15;
+	}
+    return c;
+}
+
+int main()
+try
+{
+	double t = 0;
+	double result = 0;
+	string unit = " ";
+	cout<<"Enter a celsius temperature ended with c; or enter a kelvin temperature ended with k:";
+	cin>>t>>unit;
+	if (unit == "c")
+	{
+		result = ctok(t);
+		cout<<t<<"C is equal to "<<result<<"K.";
+	}
+	else if (unit == "k")
+	{
+		result = ktoc(t);
+		cout<<t<<"K is equal to "<<result<<"C.";
+	}
+	else
+	{
+		cout<<"Oops, "<<unit<<" is an unknown unit.";
+	}
+}
+catch(runtime_error & e)
+{
+	cerr<<"runtime error:"<<e.what()<<'\n';
+}
+
+Exercise 6*********************************************************************
+
+double ctof (double c)
+{
+	double f = 0;
+	if (c<-273.15)
+	{
+		error("this celsius temperature is not exist(in the ctof)!");
+	}
+	else
+	{
+		f = 1.8*c + 32;
+	}
+    return f;
+}
+
+double ftoc (double f)
+{
+	double c = 0;
+	if (f<-459.67)
+	{
+		error("this kelvin temperature is not exist(in the ktoc)!");
+	}
+	else
+	{
+		c = (f-32)/1.8;
+	}
+    return c;
+}
+
+int main()
+try
+{
+	double t = 0;
+	double result = 0;
+	string unit = " ";
+	cout<<"Enter a celsius temperature ended with c; or enter a Fahrenheit temperature ended with f:";
+	while(cin>>t>>unit)
+	{
+		if (unit == "c")
+		{
+			result = ctof(t);
+			cout<<t<<"C is equal to "<<result<<"F.\n";
+		}
+		else if (unit == "f")
+		{
+			result = ftoc(t);
+			cout<<t<<"F is equal to "<<result<<"C.\n";
+		}
+		else
+		{
+			error("Oops,It is an unknown unit:",unit);
+		}
+		cout<<"Enter a celsius temperature ended with c; or enter a Fahrenheit temperature ended with f:";
+	}
+}
+catch(runtime_error & e)
+{
+	cerr<<"runtime error:"<<e.what()<<'\n';
+}
+
+Exercise 7*********************************************************************
+
+ this answer is a wrong one, ignore it.
+
+class bad_quadratic{};
+
+void quadratic(double a, double b, double c)
+{
+	double x1 = 0;
+	double x2 = 0;
+	 if ((b*b-4*a*c) < 0)
+	 {
+		 throw bad_quadratic();
+	 }
+	else
+	{
+		x1 = (-b+sqrt(b*b-4*a*c))/(2*a);
+		x2 = (-b-sqrt(b*b-4*a*c))/(2*a);
+		cout<<"Solution for "<<a<<"x^2+"<<b<<"x+"<<c<<"=0: x1="<<x1<<" x2="<<x2<<".\n";
+	}
+}
+
+int main()
+try
+{
+	double a = 0;
+	double b = 0;
+	double c =0;
+	cout<<"Enter three number a,b,c to solve the quadratic: ax^2+bx+c=0\n";
+	cin>>a>>b>>c;
+	quadratic(a,b,c);
+}
+catch (bad_quadratic)
+{
+	cout<<"There is  no solution.";
+}
+
+
+
+
+this correct answer from Internet:
+
+double a,b,c;	// coefficients
+
+void solve()
+{
+	cout << "Please enter three floating-point numbers (a b c) to be used as the coefficients in a*x*x + b*x + c == 0: ";
+
+	while (cin>>a>>b>>c) {
+		if(a==0) {	// just b*x+c==0
+					// easy: x == -c/b
+			if (b==0)	// easy: c == 0
+				cout << "no root (since x isn't used)\n";
+			else
+				cout << "x == " << -c/b << '\n';
+		}
+		else if (b==0) { // a*x*x+c==0
+							// we know that a is not zero so, x*x == -c/a
+							// if -c/a 0, obviousl x is zero
+							// if -c/a is positive, there are two real solutions
+							// if -c/a is negative, there are not real solutions
+			double ca = -c/a;
+			if (ca == 0)
+				cout << "x==0\n";
+			else if (ca < 0)
+				cout << "no real roots\n";
+			else
+				cout << "two real roots: " << sqrt(ca) << " and " << -sqrt(ca) << '\n';
+		}
+		else {	// here we finally have to apply the complete formula
+				// we know that neither a nor b is zero
+			double sq = b*b-4*a*c;
+			if (sq==0)
+				cout << "one real root: " << -b/(2*a) << '\n';
+			else if (sq<0)
+				cout << "no real roots\n";
+			else
+				cout << "two real roots: " << setprecision(12) << (-b+sqrt(sq))/(2*a) << " and " << (-b-sqrt(sq))/(2*a) << '\n';
+		}
+
+		cout << "please try again (enter a b c): ";
+	}
+}
+
+const double epsilon = 1.0e-7;	// "close enough to zero" for us
+
+double found(double x)
+	// check x against epsilon;
+	// in case of a poor solution print a message to alert the user
+{
+	double e = a*x*x+b*x+c;
+
+	if (e==0) return x;
+	if (0<e && epsilon<e)
+		cout << "poor root; off by " << e << '\n';	// positive and larger than epsilon
+	else if (e<-epsilon)
+		cout << "poor root; off by " << e << '\n';	// negative and smaller than epsilon
+	return x;
+}
+
+void solve2()
+{
+	cout << "Please enter three floating-point numbers (a b c) to be used as the coefficients in a*x*x + b*x + c == 0: ";
+
+	while (cin>>a>>b>>c) {
+		if(a==0) {	// just b*x+c==0
+					// easy: x == -c/b
+			if (b==0)	// easy: c == 0
+				cout << "no root (since x isn't used)\n";
+			else
+				cout << "x == " << found(-c/b) << '\n';
+		}
+		else if (b==0) { // a*x*x+c==0
+							// we know that a is not zero so, x*x == -c/a
+							// if -c/a 0, obviousl x is zero
+							// if -c/a is positive, there are two real solutions
+							// if -c/a is negative, there are not real solutions
+			double ca = -c/a;
+			if (ca == 0)
+				cout << "x==0\n";
+			else if (ca < 0)
+				cout << "no real roots\n";
+			else
+				cout << "two real roots: " << found(sqrt(ca)) << " and " << found(-sqrt(ca)) << '\n';
+		}
+		else {	// here we finally have to apply the complete formula
+				// we know that neither a nor b is zero
+			double sq = b*b-4*a*c;
+			if (sq==0)
+				cout << "one real root: " << found(-b/(2*a)) << '\n';
+			else if (sq<0)
+				cout << "no real roots\n";
+			else
+				cout << "two real roots: " << setprecision(12) << found((-b+sqrt(sq))/(2*a)) << " and " << found((-b-sqrt(sq))/(2*a)) << '\n';
+		}
+
+		cout << "please try again (enter a b c): ";
+	}
+}
+
+int main()
+try
+{
+	cout << "Do you want your results checked? (yes/no): ";
+	string s;
+	cin >> s;
+	if (s=="no")
+		solve();
+	else if (s=="yes")
+		solve2();
+	else
+		error("I don't understand the answer ",s);
+	keep_window_open("~");	// For some Windows(tm) setups
+}
+catch (runtime_error e) {	// this code is to produceerror messages; it will be described in Chapter 5
+	cout << e.what() << '\n';
+	keep_window_open("~");	// For some Windows(tm) setups
+}
+
+
+Exercise 8*********************************************************************
+
+int main()
+try
+{
+	int count = 0;
+	cout<<"Please enter the number of values you want to sum:";
+	cin>>count;
+	vector<int> list;
+	int numbers = 0;
+	cout<<"Please enter some integers(press'|'to stop):";
+	while(cin>>numbers)
+	{
+		list.push_back(numbers);
+	}
+	int sum = 0;
+	for(int i = 0; i<count; ++i)
+	{
+		sum += list[i];
+	}
+	cout<<"The sum of the first "<<count<<" numbers is "<<sum<<" ."<<endl;
+}
+catch(out_of_range)
+{
+	cerr<<"Oops! range error. numbers you entered are not enough."<<endl;
+}
+
+Exercise 9*********************************************************************
+
+int main()
+try
+{
+	int count = 0;
+	cout<<"Please enter the number of values you want to sum:";
+	cin>>count;
+	if (count<0)
+	{
+		error("the number must be a positive integer!");
+	}
+	vector<double> list;
+	double numbers = 0;
+	cout<<"Please enter some integers(press'|'to stop):";
+	while(cin>>numbers)
+	{
+		list.push_back(numbers);
+	}
+	double sum = 0;
+	for(int i = 0; i<count; ++i)
+	{
+		sum += list[i];
+	}
+	int result = narrow_cast<int>(sum);
+	cout<<"The sum of the first "<<count<<" numbers is "<<result<<" ."<<endl;
+}
+catch(out_of_range)
+{
+	cerr<<"Oops! range error. numbers you entered are not enough."<<endl;
+}
+catch(runtime_error& e)
+{
+	cerr << e.what() << '\n';
+}
+
+Exercise 10*********************************************************************
+
+int main()
+try
+{
+	int count = 0;
+	cout<<"Please enter the number of values you want to sum:";
+	cin>>count;
+	if (count<0)
+	{
+		error("the number must be a positive integer!");
+	}
+	vector<double> list;
+	double numbers = 0;
+	cout<<"Please enter some integers(press'|'to stop):";
+	while(cin>>numbers)
+	{
+		if(list.size()==0 || numbers!=list[list.size()-1])
+		{
+			list.push_back(numbers);
+		}
+	}
+	double sum = 0;
+	for(int i = 0; i<count; ++i)
+	{
+		sum += list[i];
+	}
+	int result = narrow_cast<int>(sum);
+	cout<<"The sum of the first "<<count<<" numbers is "<<result<<" ."<<endl;
+	for (int i = 0; i<list.size();++i)
+	{
+		cout<<list[i]<<" ";
+	}
+}
+catch(out_of_range)
+{
+	cerr<<"Oops! range error. numbers you entered are not enough."<<endl;
+}
+catch(runtime_error& e)
+{
+	cerr << e.what() << '\n';
+}
+
+Exercise 11*********************************************************************
+
+int main()
+try
+{
+	vector<long long> fabonacci = {1,1};
+	int i = 2;
+	while (true)
+	{
+		fabonacci.push_back(fabonacci[i-1]+fabonacci[i-2]);
+		long long result = fabonacci[i-1]+fabonacci[i-2];
+		int check = narrow_cast<int>(result);
+		cout<<"fabonacci["<<i<<"] is "<<check<<endl;
+		++i;
+	}
+}
+catch(runtime_error & e)
+{
+	cerr << e.what() << '\n';
+}
+
+Exercises 12/13*********************************************************************
+
+int main()
+{
+	int n = 0;
+	cout<<"Welcome to the guessing game 'Bulls and Cows' ! \n"
+			<<"now the computer has four different integers,\n"
+			<<"enter your guesses, if you get a bull, that means you got a number right and in the right position.\n"
+			<<"If you get a cow, that means you got a number right but in the wrong position.\n"
+			<<"first, enter a integer to start the game:";
+	cin>>n;
+	vector<int> hold;
+	for (int i = 0; i<4; ++i)
+	{
+//		srand(n);                            //头文件中的randint()似乎有问题，并没有调用srand(n)
+		hold.push_back(randint(10));
+	}
+//	for (int i = 0; i<4; ++i)       //for testing
+//	{
+//		cout<<hold[i]<<" ";
+//	}
+	vector<int> guesses(4);
+	int guess = 0;
+	int count = 0;
+	bool check = false;
+	while(check == false)
+	{
+		int bulls = 0;
+		int cows = 0;
+		cout<<"Now, enter your guesses:";
+		for (int i = 0; i<4; ++i)
+		{
+			cin>>guess;
+			guesses[i]=guess;
+		}
+		++count;
+
+		for (int i = 0; i<4; ++i)
+		{
+			if (hold[i]==guesses[i])
+			{
+				++bulls;
+			}
+		}
+		for (int i = 0; i<4; ++i)
+		{
+			for (int j = 0; j<4; ++j)
+			{
+				if (guesses[i]==hold[j])
+				{
+					++cows;
+				}
+			}
+		}
+		cows=cows-bulls;
+		if (bulls>1)
+		{
+			cout<<bulls<<" bulls and ";
+		}
+		else
+		{
+			cout<<bulls<<" bull and ";
+		}
+		if (cows>1)
+		{
+			cout<<cows<<" cows."<<endl;
+		}
+		else
+		{
+			cout<<cows<<" cows."<<endl;
+		}
+		if (bulls==4)
+		{
+			check = true;
+		}
+	}
+	cout<<"That's right! you win! you guessed "<<count<<" times."<<endl;
+}
+
+Exercise 14*********************************************************************
+
+int main()
+{
+	int value = 0;
+	string week = " ";
+	cout<<"Enter (day-of-the-week, value) pairs(press'|0'to stop):";
+	cin>>week>>value;
+	vector<int> mon;
+	vector<int> tue;
+	vector<int> wed;
+	vector<int> thu;
+	vector<int> fri;
+	vector<int> sat;
+	vector<int> sun;
+	int count = 0;
+	while(week!="|")
+	{
+		if (week=="monday" ||week=="Mon" ||week=="Monday")
+		{
+			mon.push_back(value);
+		}
+		else if (week=="tuesday" ||week=="Tue" ||week=="Tuesday")
+		{
+			tue.push_back(value);
+		}
+		else if (week=="wednesday" ||week=="Wed" ||week=="Wednesday")
+		{
+			wed.push_back(value);
+		}
+		else if (week=="thursday" ||week=="Thu" ||week=="Thursday")
+		{
+			thu.push_back(value);
+		}
+		else if (week=="friday" ||week=="Fri" ||week=="Friday")
+		{
+			fri.push_back(value);
+		}
+		else if (week=="saturday" ||week=="Sat" ||week=="Saturday")
+		{
+			sat.push_back(value);
+		}
+		else if (week=="sunday" ||week=="Sun" ||week=="Sunday")
+		{
+			sun.push_back(value);
+		}
+		else
+		{
+			cout<<week<<" is not a day of the week!";
+			++count;
+		}
+		cin>>week>>value;
+	}
+	int sum_1 = 0;
+	int sum_2 = 0;
+	int sum_3 = 0;
+	int sum_4 = 0;
+	int sum_5 = 0;
+	int sum_6 = 0;
+	int sum_7 = 0;
+	cout<<"vector<int> mon: ";
+	for (int i = 0; i<mon.size(); ++i)
+	{
+		sum_1 += mon[i];
+		cout<<mon[i]<<" ";
+	}
+	cout<<"\n";
+	cout<<"vector<int> tue: ";
+	for (int i = 0; i<tue.size(); ++i)
+	{
+		sum_2 += tue[i];
+		cout<<tue[i]<<" ";
+	}
+	cout<<"\n";
+	cout<<"vector<int> wed: ";
+	for (int i = 0; i<wed.size(); ++i)
+	{
+		sum_3 += wed[i];
+		cout<<wed[i]<<" ";
+	}
+	cout<<"\n";
+	cout<<"vector<int> thu: ";
+	for (int i = 0; i<thu.size(); ++i)
+	{
+		sum_4 += thu[i];
+		cout<<thu[i]<<" ";
+	}
+	cout<<"\n";
+	cout<<"vector<int> fri: ";
+	for (int i = 0; i<fri.size(); ++i)
+	{
+		sum_5 += fri[i];
+		cout<<fri[i]<<" ";
+	}
+	cout<<"\n";
+	cout<<"vector<int> sat: ";
+	for (int i = 0; i<sat.size(); ++i)
+	{
+		sum_6 += sat[i];
+		cout<<sat[i]<<" ";
+	}
+	cout<<"\n";
+	cout<<"vector<int> sun: ";
+	for (int i = 0; i<sun.size(); ++i)
+	{
+		sum_7 += sun[i];
+		cout<<sun[i]<<" ";
+	}
+	cout<<"\n";
+	cout<<"value of Monday is: "<<sum_1<<"\n"
+			<<"value of Tuesday is: "<<sum_2<<"\n"
+			<<"value of Wednesday is: "<<sum_3<<"\n"
+			<<"value of Thursday is: "<<sum_4<<"\n"
+			<<"value of Friday is: "<<sum_5<<"\n"
+			<<"value of Saturday: "<<sum_6<<"\n"
+			<<"value of Sunday is: "<<sum_7<<"\n"
+			<<"There are "<<count<<" values are rejected"<<endl;
+}
